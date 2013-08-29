@@ -167,16 +167,30 @@ class Highcharts extends \lithium\template\Helper {
 	
 	private function _series($type = null, array $data) {
 		switch ($type) {
-			
-			case 'area':
-			case 'areaspline':
-			case 'bar':
-			case 'column':
-			case 'line':
-			case 'spline':
+			case 'pie':
 				
-				$series = array();
+				$series = array(array('data' => array(), 'type' => 'pie'));
+				foreach ($data as $key => $value) {
+					$series[0]['data'][] = array($key, $value);
+				}
+				
+				return $series;
+				
+			default:
+				
+				$globalOptions = array();
+				foreach ($data as $option => $value) {
+					if (!is_array($value)) {
+						$globalOptions[$option] = $value;
+						unset($data[$option]);
+					}
+				}
+				foreach ($data as $name => $options) {
+					$data[$name] = $options + $globalOptions;
+				}
+				
 				$i = 0;
+				$series = array();
 				foreach ($data as $name => $options) {
 					$series[$i] = $options;
 					if (is_string($name)) {
@@ -190,31 +204,8 @@ class Highcharts extends \lithium\template\Helper {
 					}
 					$i++;
 				}
+				
 				return $series;
-				
-			case 'pie':
-				
-				$name = current(array_keys($data));
-				$series = array(array('data' => array(), 'type' => 'pie'));
-				foreach ($data[$name] as $key => $value) {
-					$series[0]['data'][] = array($key, $value);
-				}
-				if (is_string($name)) {
-					$series[0]['name'] = $name;
-				}
-				return $series;
-				
-			default:
-				
-				foreach ($data as $key => $options) {
-					if (isset($options['pointStart'])) {
-						$data[$key]['pointStart'] = $this->_pointStart($options['pointStart']);
-					}
-					if (isset($options['pointInterval'])) {
-						$data[$key]['pointInterval'] = $this->_pointInterval($options['pointInterval']);
-					}
-				}
-				return $data;
 				
 		}
 	}
