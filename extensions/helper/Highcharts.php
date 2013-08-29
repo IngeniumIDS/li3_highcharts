@@ -52,7 +52,7 @@ class Highcharts extends \lithium\template\Helper {
 				)
 			),
 			'tooltip' => array(
-				'pointFormat' => '<span style="color:{series.color}">{series.name}</span>: <b>{point.y} ({point.percentage:.1f}%)</b><br/>'
+				'pointFormat' => '<b>{point.y} ({point.percentage:.1f}%)</b>'
 			)
 		),
 		'spline' => array(
@@ -97,8 +97,7 @@ class Highcharts extends \lithium\template\Helper {
 		return $this->chart($options, 'line', $title, $data);
 	}
 	
-	public function pie($title, $tooltipName, array $data, array $options = array()) {
-		$data = is_string($tooltipName) ? array($tooltipName => $data) : array($data);
+	public function pie($title, array $data, array $options = array()) {
 		return $this->chart($options, 'pie', $title, $data);
 	}
 	
