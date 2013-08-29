@@ -75,7 +75,7 @@ class Highcharts extends \lithium\template\Helper {
 		return $this->chart($options, 'area', $title, $data);
 	}
 	
-	public function areaspline($title, array $data, array $options = array()) {
+	public function areaSpline($title, array $data, array $options = array()) {
 		return $this->chart($options, 'areaspline', $title, $data);
 	}
 	
