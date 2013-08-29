@@ -107,10 +107,9 @@ class Highcharts extends \lithium\template\Helper {
 	
 	private function _chartOptions($type = null, $title = null, array $data = array(), array $options = array()) {
 		$defaults = isset($this->_defaults[$type]) ? $this->_defaults[$type] : array();
-		if (!isset($options['title'])) {
-			$options['title'] = array();
+		if (!isset($options['title']) && isset($title)) {
+			$options['title'] = array('text' => $title);
 		}
-		$options['title']['text'] = $title;
 		if (empty($data)) {
 			if (isset($options['series'])) {
 				$options['series'] = $this->_series($type, $options['series']);
