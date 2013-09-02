@@ -11,10 +11,19 @@ cd path/to/project
 git submodule add https://github.com/IngeniumIDS/li3_highcharts.git libraries/li3_highcharts
 ```
 
-Make the application aware of the library by adding the following to `config/bootstrap/libraries.php`.
+Make the application aware of the library by adding the following to `app/config/bootstrap/libraries.php`.
 
 ```php
 Libraries::add('li3_highcharts');
+```
+
+Finally load the jQuery and highcharts JavaScript libraries between the `<head>` and `</head>` HTML tags at the top of the layout.
+
+```php
+echo $this->html->script(array(
+	'//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js',
+	'http://code.highcharts.com/highcharts.js'
+));
 ```
 
 Usage
