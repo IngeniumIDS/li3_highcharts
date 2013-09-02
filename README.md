@@ -144,7 +144,7 @@ echo $this->highcharts->chart(array(
 		'Home' => array(
 			'data' => array(1,3,2,7,5,4,6,2)
 		),
-		array(
+		'Contact' => array(
 			'data' => array(0,1,1,4,5,0,4,1)
 		)
 	)
