@@ -5,43 +5,27 @@ class Highcharts extends \lithium\template\Helper {
 	
 	protected $_defaults = array(
 		'area' => array(
-			'chart' => array(
-				'type' => 'area'
-			),
+			'chart' => array('type' => 'area'),
 			'credits' => array('enabled' => false)
 		),
 		'areaspline' => array(
-			'chart' => array(
-				'type' => 'areaspline'
-			),
+			'chart' => array('type' => 'areaspline'),
 			'credits' => array('enabled' => false)
 		),
 		'bar' => array(
-			'chart' => array(
-				'type' => 'bar'
-			),
-			'tooltip' => array(
-				'shared' => true
-			)
+			'chart' => array('type' => 'bar'),
+			'tooltip' => array('shared' => true)
 		),
 		'column' => array(
-			'chart' => array(
-				'type' => 'column'
-			),
-			'tooltip' => array(
-				'shared' => true
-			)
+			'chart' => array('type' => 'column'),
+			'tooltip' => array('shared' => true)
 		),
 		'line' => array(
-			'chart' => array(
-				'type' => 'line'
-			),
+			'chart' => array('type' => 'line'),
 			'credits' => array('enabled' => false)
 		),
 		'pie' => array(
-			'chart' => array(
-				'type' => 'pie'
-			),
+			'chart' => array('type' => 'pie'),
 			'credits' => array('enabled' => false),
 			'plotOptions' => array(
 				'pie' => array(
@@ -51,14 +35,10 @@ class Highcharts extends \lithium\template\Helper {
 					'showInLegend' => true
 				)
 			),
-			'tooltip' => array(
-				'pointFormat' => '<b>{point.y} ({point.percentage:.1f}%)</b>'
-			)
+			'tooltip' => array('pointFormat' => '<b>{point.y} ({point.percentage:.1f}%)</b>')
 		),
 		'spline' => array(
-			'chart' => array(
-				'type' => 'spline'
-			),
+			'chart' => array('type' => 'spline'),
 			'credits' => array('enabled' => false)
 		)
 	);
