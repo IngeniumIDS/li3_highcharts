@@ -190,4 +190,3 @@ class Highcharts extends \lithium\template\Helper {
 	}
 	
 }
-?>
