@@ -20,10 +20,10 @@ Libraries::add('li3_highcharts');
 Finally load the jQuery and highcharts JavaScript libraries between the `<head>` and `</head>` HTML tags at the top of the layout.
 
 ```php
-echo $this->html->script(array(
+echo $this->html->script([
 	'//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js',
 	'http://code.highcharts.com/highcharts.js'
-));
+]);
 ```
 
 Usage
@@ -50,26 +50,16 @@ Area chart:
 ```php
 echo $this->highcharts->area(
 	'Daily Page Clicks',
-	array(
+	[
 		'pointStart' => '28 August 2013',
 		'pointInterval' => 'day',
-		'Home' => array(
-			'data' => array(1,3,2,7,5,4,6,2)
-		),
-		'Contact' => array(
-			'data' => array(0,1,1,4,5,0,4,1)
-		)
-	),
-	array(
-		'xAxis' => array(
-			'type' => 'datetime'
-		),
-		'yAxis' => array(
-			'title' => array(
-				'text' => 'Clicks'
-			)
-		)
-	)
+		'Home' => ['data' => [1,3,2,7,5,4,6,2]],
+		'Contact' => ['data' => [0,1,1,4,5,0,4,1]]
+	],
+	[
+		'xAxis' => ['type' => 'datetime'],
+		'yAxis' => ['title' => ['text' => 'Clicks']]
+	]
 );
 ```
 
@@ -78,13 +68,13 @@ Pie chart:
 ```php
 echo $this->highcharts->pie(
 	'Browser Share',
-	array(
+	[
 		'Chrome' => 61,
 		'Safari' => 38,
 		'IE' => 6,
 		'Others' => 4,
 		'Opera' => 3
-	)
+	]
 );
 ```
 
@@ -95,26 +85,16 @@ Area spline chart:
 ```php
 echo $this->highcharts->areaSpline(
 	'Daily Page Clicks',
-	array(
+	[
 		'pointStart' => '(function(){return Date.UTC(2013,7,28,0,0,0);})()',
 		'pointInterval' => '(function(){return 24 * 3600 * 1000;})()',
-		'Home' => array(
-			'data' => array(1,3,2,7,5,4,6,2)
-		),
-		'Contact' => array(
-			'data' => array(0,1,1,4,5,0,4,1)
-		)
-	),
-	array(
-		'xAxis' => array(
-			'type' => 'datetime'
-		),
-		'yAxis' => array(
-			'title' => array(
-				'text' => 'Clicks'
-			)
-		)
-	)
+		'Home' => ['data' => [1,3,2,7,5,4,6,2]],
+		'Contact' => ['data' => [0,1,1,4,5,0,4,1]]
+	],
+	[
+		'xAxis' => ['type' => 'datetime'],
+		'yAxis' => ['title' => ['text' => 'Clicks']]
+	]
 );
 ```
 
@@ -123,30 +103,16 @@ The helper has one more function (chart) which can be used with only the options
 Spline chart:
 
 ```php
-echo $this->highcharts->chart(array(
-	'chart' => array(
-		'type' => 'spline'
-	),
-	'title' => array(
-		'text' => 'Daily Page Clicks'
-	),
-	'xAxis' => array(
-		'type' => 'datetime'
-	),
-	'yAxis' => array(
-		'title' => array(
-			'text' => 'Clicks'
-		)
-	),
-	'series' => array(
+echo $this->highcharts->chart([
+	'chart' => ['type' => 'spline'],
+	'title' => ['text' => 'Daily Page Clicks'],
+	'xAxis' => ['type' => 'datetime'],
+	'yAxis' => ['title' => ['text' => 'Clicks']],
+	'series' => [
 		'pointStart' => '28 August 2013',
 		'pointInterval' => 'day',
-		'Home' => array(
-			'data' => array(1,3,2,7,5,4,6,2)
-		),
-		'Contact' => array(
-			'data' => array(0,1,1,4,5,0,4,1)
-		)
-	)
-));
+		'Home' => ['data' => [1,3,2,7,5,4,6,2]],
+		'Contact' => ['data' => [0,1,1,4,5,0,4,1]]
+	]
+]);
 ```
