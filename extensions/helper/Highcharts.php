@@ -49,8 +49,6 @@ class Highcharts extends \lithium\template\Helper {
 		'id' => 'HighchartsChart{:id}'
 	];
 	
-	private $_id = 0;
-	
 	public function area($title, array $data, array $options = []) {
 		return $this->chart($options, 'area', $title, $data);
 	}
@@ -139,8 +137,7 @@ class Highcharts extends \lithium\template\Helper {
 	}
 	
 	private function _id() {
-		$id = $this->_id;
-		$this->_id++;
+		$id = uniqid();
 		return $this->_render(__METHOD__, 'id', compact('id'));
 	}
 	
