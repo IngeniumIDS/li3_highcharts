@@ -116,3 +116,5 @@ echo $this->highcharts->chart([
 	]
 ]);
 ```
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/IngeniumIDS/li3_highcharts/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
