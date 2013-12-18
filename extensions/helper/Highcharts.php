@@ -97,7 +97,7 @@ class Highcharts extends \lithium\template\Helper {
 		}
 		$options = array_replace_recursive($defaults, $options);
 		$options = preg_replace_callback(
-			'/(?<=:)"\(function\((?:(?!}\)\(\)").)*}\)\(\)"/',
+			'/(?<=:)"\(?function\((?:(?!}\)\(\)").)*}(\)\(\))?"/',
 			function ($matches) {
 				return str_replace('\"', '"', substr($matches[0], 1, -1));
 			},
