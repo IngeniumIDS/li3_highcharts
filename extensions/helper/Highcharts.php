@@ -178,6 +178,12 @@ class Highcharts extends \lithium\template\Helper {
 					if (isset($options['pointInterval'])) {
 						$series[$i]['pointInterval'] = $this->_pointInterval($options['pointInterval']);
 					}
+					if (isset($options['data'])) {
+						$series[$i]['data'] = [];
+						foreach ($options['data'] as $pointValue) {
+							$series[$i]['data'][] = $pointValue;
+						}
+					}
 					$i++;
 				}
 				
