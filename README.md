@@ -1,15 +1,24 @@
-Highcharts Helper for Lithium
-=============================
+# Highcharts Helper for Lithium
 
-Installation
-------------
-
-Assuming your project is a clone of `https://github.com/UnionOfRAD/framework.git`, register li3_highcharts as a submodule into the projects' libraries.
+## Installation
 
 ```
 cd path/to/project
+```
+
+### Composer
+
+```
+composer require jasonroyle/li3_highcharts
+```
+
+### Git
+
+```
 git submodule add https://github.com/IngeniumIDS/li3_highcharts.git libraries/li3_highcharts
 ```
+
+## Enable the Library
 
 Make the application aware of the library by adding the following to `app/config/bootstrap/libraries.php`.
 
@@ -21,13 +30,12 @@ Finally load the jQuery and highcharts JavaScript libraries between the `<head>`
 
 ```php
 echo $this->html->script([
-	'//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js',
+	'http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js',
 	'http://code.highcharts.com/highcharts.js'
 ]);
 ```
 
-Usage
------
+## Usage
 
 The helper has seven functions that generate different types of charts (area, areaSpline, bar, column, line, pie and spline). These functions accept three parameters (title, data and options).
 
