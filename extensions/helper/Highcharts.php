@@ -3,7 +3,7 @@
 namespace li3_highcharts\extensions\helper;
 
 class Highcharts extends \lithium\template\Helper {
-	
+
 	protected $_defaults = [
 		'area' => [
 			'chart' => ['type' => 'area'],
@@ -43,47 +43,47 @@ class Highcharts extends \lithium\template\Helper {
 			'credits' => ['enabled' => false]
 		]
 	];
-	
+
 	protected $_strings = [
 		'chart' => '<div id="{:id}"></div><script type="text/javascript">$("#{:id}").highcharts({:options});</script>',
 		'date' => '(function(){return Date.UTC({:year},{:month},{:day},{:hour},{:min},{:sec});})()',
 		'id' => 'HighchartsChart{:id}'
 	];
-	
+
 	public function area($title, array $data, array $options = []) {
 		return $this->chart($options, 'area', $title, $data);
 	}
-	
+
 	public function areaSpline($title, array $data, array $options = []) {
 		return $this->chart($options, 'areaspline', $title, $data);
 	}
-	
+
 	public function bar($title, array $data, array $options = []) {
 		return $this->chart($options, 'bar', $title, $data);
 	}
-	
+
 	public function column($title, array $data, array $options = []) {
 		return $this->chart($options, 'column', $title, $data);
 	}
-	
+
 	public function chart(array $options, $type = null, $title = null, array $data = []) {
 		$options = $this->_chartOptions($type, $title, $data, $options);
 		$id = $this->_id();
 		return $this->_render(__METHOD__, 'chart', compact('id', 'options'));
 	}
-	
+
 	public function line($title, array $data, array $options = []) {
 		return $this->chart($options, 'line', $title, $data);
 	}
-	
+
 	public function pie($title, array $data, array $options = []) {
 		return $this->chart($options, 'pie', $title, $data);
 	}
-	
+
 	public function spline($title, array $data, array $options = []) {
 		return $this->chart($options, 'spline', $title, $data);
 	}
-	
+
 	private function _chartOptions($type = null, $title = null, array $data = [], array $options = []) {
 		$defaults = isset($this->_defaults[$type]) ? $this->_defaults[$type] : [];
 		if (!isset($options['title']) && isset($title)) {
@@ -106,7 +106,7 @@ class Highcharts extends \lithium\template\Helper {
 		);
 		return $options;
 	}
-	
+
 	private function _pointStart($date) {
 		$time = strtotime($date);
 		if (!$time) {
@@ -120,7 +120,7 @@ class Highcharts extends \lithium\template\Helper {
 		$sec = preg_replace('/^0/', '', date('s', $time));
 		return $this->_render(__METHOD__, 'date', compact('year', 'month', 'day', 'hour', 'min', 'sec'));
 	}
-	
+
 	private function _pointInterval($interval) {
 		switch ($interval) {
 			case 'week':
@@ -136,25 +136,25 @@ class Highcharts extends \lithium\template\Helper {
 		}
 		return $interval;
 	}
-	
+
 	private function _id() {
 		$id = uniqid();
 		return $this->_render(__METHOD__, 'id', compact('id'));
 	}
-	
+
 	private function _series($type = null, array $data) {
 		switch ($type) {
 			case 'pie':
-				
+
 				$series = [['data' => [], 'type' => 'pie']];
 				foreach ($data as $key => $value) {
 					$series[0]['data'][] = [$key, $value];
 				}
-				
+
 				return $series;
-				
+
 			default:
-				
+
 				$globalOptions = [];
 				foreach ($data as $option => $value) {
 					if (!is_array($value)) {
@@ -165,7 +165,7 @@ class Highcharts extends \lithium\template\Helper {
 				foreach ($data as $name => $options) {
 					$data[$name] = $options + $globalOptions;
 				}
-				
+
 				$i = 0;
 				$series = [];
 				foreach ($data as $name => $options) {
@@ -187,10 +187,10 @@ class Highcharts extends \lithium\template\Helper {
 					}
 					$i++;
 				}
-				
+
 				return $series;
-				
+
 		}
 	}
-	
+
 }
