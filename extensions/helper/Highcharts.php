@@ -148,7 +148,7 @@ class Highcharts extends \lithium\template\Helper {
 
 				$series = [['data' => [], 'type' => 'pie']];
 				foreach ($data as $key => $value) {
-					$series[0]['data'][] = [$key, $value];
+					$series[0]['data'][] = [(string) $key, $value];
 				}
 
 				return $series;
