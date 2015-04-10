@@ -1,11 +1,5 @@
 # Highcharts Helper for Lithium
 
-## Installation
-
-```
-cd path/to/project
-```
-
 ### Composer
 
 ```
